@@ -1,10 +1,7 @@
-FROM nginx:stable
+FROM nginxinc/nginx-unprivileged:stable
 
-MAINTAINER Andrey Sizov, andrey.sizov@jetbrains.com
+MAINTAINER Mitchell Huang, mitchell@mitchellhuang.net
 
-COPY default.conf.template /etc/nginx/conf.d/
+COPY default.conf /etc/nginx/conf.d/
 
-EXPOSE 80
-
-CMD /bin/bash -c "envsubst < /etc/nginx/conf.d/default.conf.template > /etc/nginx/conf.d/default.conf \	
-			&& nginx -g 'daemon off;'"
+EXPOSE 8080
